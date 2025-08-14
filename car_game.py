@@ -33,6 +33,21 @@ road = (100, 0, 300, height)
 left_edge_marker = (95, 0, marker_width, height)
 right_edge_marker = (395, 0, marker_width, height)
 
+# cordinates of Lanes
+left_lane = 150
+center_lane = 250
+right_lane = 350 
+lanes  = [left_lane , center_lane, right_lane]
+
+# for animating movement of the lane makers 
+lane_marker_move_y = 0
+
+class Vehicle(pygame.sprite.Sprite):
+
+   def _init_(self, image, x, y): 
+         pygame.sprite.Sprite._init_(self)
+   
+
 # game loop
 clock = pygame.time.Clock()
 fps = 120
@@ -54,6 +69,14 @@ while running:
     # draw the edge marker
     pygame.draw. rect(screen, yellow, left_edge_marker)
     pygame.draw. rect(screen, yellow, right_edge_marker)
+
+    # draw the line makers 
+    lane_marker_move_y += speed * 2
+    if lane_marker_move_y >= marker_height * 2:
+        lane_marker_move_y = 0
+    for y in range(marker_height * -2, height, marker_height * 2):
+        pygame.draw.rect(screen, white, (left_lane + 45, y + lane_marker_move_y, marker_width, marker_height))
+        pygame.draw.rect(screen, white, (center_lane + 45, y + lane_marker_move_y, marker_width, marker_height))
 
 
     pygame.display.update()
