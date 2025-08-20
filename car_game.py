@@ -151,9 +151,9 @@ while running:
             # add to score
             score += 1
 
-            #speed up the game after passing 10 vehicles
-            if score > 0 and score % 10 == 0:
-                score += 1
+            #speed up the game after passing 5 vehicles
+            if score > 0 and score % 5 == 0:
+                speed += 1
 
         #draw the vehicles
         vehicle_group.draw(screen)
@@ -162,4 +162,4 @@ while running:
     # update display
     pygame.display.update()
 
-pygame.quit()
+pygame.quit()22.19
